@@ -12,4 +12,4 @@ signed distance field
 
 # result
 
-![image](https://github.com/HongchengL1u/bspline_opt/master/result.png)
+![image](https://github.com/HongchengL1u/bspline_opt/main/result.png)
