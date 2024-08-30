@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsdf.a CMakeFiles/sdf.dir/src/signed_distance_field_2d.o CMakeFiles/sdf.dir/src/grid_map_2d.o
-/usr/bin/ranlib libsdf.a
