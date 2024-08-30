@@ -307,6 +307,7 @@ int main()
     rec_x.push_back(rectangular[0](0));
     rec_y.push_back(rectangular[0](1));
     plt::plot(rec_x,rec_y,{{"color", "purple"}});
+    plt::save("result.png",300);
     plt::show();
     
 }
