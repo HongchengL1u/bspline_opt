@@ -255,6 +255,7 @@ void BsplineOptimizer::calcDistanceCost(const std::vector<Eigen::Vector3d>& q, d
     // edt_environment_->evaluateEDTWithGrad(q[i], -1.0, dist, dist_grad);
     if (dist_grad.norm() > 1e-4) dist_grad.normalize();
 
+    // 这里因为距离场的关系，实际上是离障碍物越近，这个sdf得到的值越小，最小为0，所以是一个反向的
     if (dist < dist0_) {
       cost += pow(dist - dist0_, 2);
       gradient[i] += 2.0 * (dist - dist0_) * dist_grad;

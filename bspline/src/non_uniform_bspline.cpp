@@ -194,6 +194,7 @@ double NonUniformBspline::checkRatio() {
   // find max vel
   double max_vel = -1.0;
   for (int i = 0; i < P.rows() - 1; ++i) {
+    // p_ = order
     Eigen::VectorXd vel = p_ * (P.row(i + 1) - P.row(i)) / (u_(i + p_ + 1) - u_(i + 1));
     for (int j = 0; j < dimension; ++j) {
       max_vel = max(max_vel, fabs(vel(j)));
@@ -247,7 +248,11 @@ bool NonUniformBspline::reallocateTime(bool show) {
       double time_new = ratio * time_ori;
       double delta_t  = time_new - time_ori;
       double t_inc    = delta_t / double(p_);
-
+      // knots vector相当于是每个控制点间隔所在的横坐标范围，一头一尾对应一头一尾
+      // 根据速度和加速度差分计算相应的调整参数，这些调整参数是调整p的
+      // vi = [1/(t_p+i+1-t_i)]*(P_i+1-P_i)
+      // 按理来说，在包括t_i+p+1之后所有点都需要增加完整的delta_t
+      // 对于在影响v的控制点范围内，一共p个点，则需要，均匀调整，因为会影响到这段的a
       for (int j = i + 2; j <= i + p_ + 1; ++j) {
         u_(j) += double(j - i - 1) * t_inc;
         if (j <= 5 && j >= 1) {
