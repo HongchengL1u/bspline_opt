@@ -11,5 +11,8 @@ Bspline
 signed distance field
 
 # result
-
 ![image](https://github.com/HongchengL1u/bspline_opt/blob/main/result.png)
+
+
+# Notes
+https://pauze4ssubm.feishu.cn/wiki/BwfMwdECiiLdKrkL4xscUQ6xnec?from=from_copylink
